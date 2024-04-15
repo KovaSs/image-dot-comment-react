@@ -55,7 +55,11 @@ export function useSettings () {
   };
 
   const setSelectedPoint = (selectedPoint) => {
-    setState((prev) => ({ ...prev, selectedPoint }));
+    setState((prev) => {
+      const newState = { ...prev, selectedPoint };
+      setLocalData(newState);
+      return  newState;
+    });
   };
 
   const setComments = (selectedImageId, points, comments, newPoint) => {

@@ -7,12 +7,12 @@ import { colors } from '../styles';
 
 const pointRadius = 5;
 
-const Point = ({ id }) => {
+const Point = ({ id, newPoint }) => {
   const {
-    setSelectedPoint,
     selectedPoint,
     dimensions,
     showPoints,
+    setSelectedPoint,
   } = useContext(SettingsContext);
 
   const { width, height } = getPointData({ id, dimensions });
@@ -20,10 +20,11 @@ const Point = ({ id }) => {
   const marginTop = height - pointRadius;
   const marginLeft = width - pointRadius;
 
+
   const backgroundColor = showPoints
     ? selectedPoint === id ? colors.selectedPoint : colors.primary
     : colors.transparent;
-  
+
   return (
     <div
       style={{
@@ -39,12 +40,12 @@ const Point = ({ id }) => {
           borderRadius: '50%',
           backgroundColor,
         }}
-        onClick={event => {
+        onClick={(event) => {
           event.stopPropagation();
           setSelectedPoint(id === selectedPoint ? null : id);
         }}
       />
-      <PointComments pointId={id} />
+      <PointComments pointId={id} newPoint={newPoint} />
     </div>
   );
 };

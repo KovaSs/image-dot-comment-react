@@ -26,14 +26,8 @@ const  AllComments = () => {
 
     return imageComments.map((comment) => (
       <div
+      style={comment.pointId === selectedPoint ?  style.selectedCommentComponent : style.commentComponent}
         key={comment.id}
-        style={
-          comment.pointId === selectedPoint ? (
-            style.selectedCommentComponent
-          ) : (
-            style.commentComponent
-          )
-        }
         onClick={event => {
           event.stopPropagation();
           setSelectedPoint(comment.pointId);

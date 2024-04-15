@@ -5,10 +5,10 @@ import { SettingsContext } from './context';
 import { useSettings } from './hooks';
 
 const App = () => {
-  const state = useSettings();
+  const context = useSettings();
 
   return (
-    <SettingsContext.Provider value={state}>
+    <SettingsContext.Provider value={context}>
       <Gallery />
       <SelectedImage />
     </SettingsContext.Provider>

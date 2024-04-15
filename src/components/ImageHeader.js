@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 
 import { SettingsContext } from '../context';
-import InputSearch from './InputSearch';
+import { InputSearch } from './InputSearch';
 import styles from '../styles';
 
 const style = styles.ImageHeader;
@@ -22,7 +22,7 @@ const ImageHeader = () => {
     return (
       <div style={style.main}>
         <InputSearch
-          defaultValue={name || ''}
+          defaultValue={name}
           placeholder="Select Name"
           onSearch={name => {
             editImage({ ...selectedImage, name });

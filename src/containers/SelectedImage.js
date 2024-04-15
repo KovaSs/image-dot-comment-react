@@ -9,7 +9,7 @@ import styles from '../styles';
 
 const style = styles.SelectedImage;
 
-const SelectedImage = () => {
+export const SelectedImage = () => {
   const {
     showAllComments,
     showPoints,
@@ -64,6 +64,4 @@ const SelectedImage = () => {
       <AllComments />
     </div>
   );
-}
-
-export default SelectedImage;
+};

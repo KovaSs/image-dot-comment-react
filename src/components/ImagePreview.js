@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import ReactCursorPosition from 'react-cursor-position';
 import Measure from 'react-measure';
 
@@ -13,24 +13,21 @@ const ImagePreview = () => {
   const currentPositionRef = useRef();
 
   const {
-    selectedPoint,
     selectedImage,
-    showPoints,
+    selectedPoint,
     dimensions,
     newPoint,
     points,
-    setSelectedPoint,
     setDimensions,
     setNewPoint,
   } = useContext(SettingsContext);
 
   const imagePoints = points[selectedImage.id];
 
-
   const setComment = (event) => {
     event.stopPropagation();
-    const newPoint = setPoint(dimensions, currentPositionRef.current);
-    if (newPoint) setNewPoint(newPoint);
+    const newPointComment = setPoint(dimensions, currentPositionRef.current);
+    if (newPointComment) setNewPoint(newPointComment);
   };
 
   return (
@@ -52,17 +49,7 @@ const ImagePreview = () => {
                 </div>
                 <div style={style.commentDiv}>
                   {imagePoints.map((point) => <Point key={point} id={point} />)}
-                  {newPoint && (
-                    <Point
-                      setSelectedPoint={setSelectedPoint}
-                      selectedPoint={selectedPoint}
-                      dimensions={dimensions}
-                      showPoints={showPoints}
-                      key={newPoint}
-                      id={newPoint}
-                      newPoint
-                    />
-                  )}
+                  {selectedPoint === newPoint && <Point id={newPoint} newPoint />}
                 </div>
               </div>
             </ReactCursorPosition>

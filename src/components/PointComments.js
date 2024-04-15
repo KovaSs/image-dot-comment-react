@@ -2,18 +2,17 @@ import React, { useContext } from 'react';
 
 import { SettingsContext } from '../context/SettingsContext';
 import { timeDifference } from '../utility';
-import InputSearch from './InputSearch';
+import { InputSearch } from './InputSearch';
 import styles from '../styles';
 
 
 const style = styles.PointComments;
 
-const PointComments = ({ pointId }) => {
+const PointComments = ({ pointId, newPoint }) => {
   const {
-    setComments,
     selectedImage,
     selectedPoint,
-    newPoint,
+    setComments,
     comments,
     points,
   } = useContext(SettingsContext);
@@ -65,10 +64,6 @@ const PointComments = ({ pointId }) => {
         {thisPointComments.map(commentComponent)}
       </div>
       <InputSearch
-        autoFocus
-        clearOnSearch
-        placeholder="comment here"
-        style={style.input}
         onSearch={comment => {
           if (comment) {
             const newComment = {
@@ -83,6 +78,10 @@ const PointComments = ({ pointId }) => {
             setComments(selectedImageId, newPoints, newComments);
           }
         }}
+        placeholder="comment here"
+        style={style.input}
+        clearOnSearch
+        autoFocus
       />
     </div>
   );

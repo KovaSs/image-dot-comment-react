@@ -7,7 +7,7 @@ import styles from '../styles';
 
 const style = styles.Gallery;
 
-const Gallery  = () => {
+export const Gallery  = () => {
   const { images, setSelectedPoint } = useContext(SettingsContext);
 
   return (
@@ -24,5 +24,3 @@ const Gallery  = () => {
     </div>
   );
 };
-
-export default Gallery;
